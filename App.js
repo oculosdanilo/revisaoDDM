@@ -1,14 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, Button,  } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, Button, FlatList} from 'react-native';
+import CardPessoas from './src/components/cardPessoas/index'
+import Pessoas from './src/data/pessoas'
+
 
 export default function App() {
+
   return (
 
     <View style={styles.container}>
+
+        <Text style={styles.titulo}>Bungou Stray Dogs</Text>
+
       
-      
-        <Text>Bungou Stray Dogs</Text>
-        
+     
         <Image
           source={{
             uri: 'https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/05/CBR-Featured-Image-Chuuya-Nakahara.jpg',
@@ -17,17 +22,32 @@ export default function App() {
 
     <Text>Digite o nome desse personagem:</Text>
     <TextInput style={styles.input} placeholder="..."></TextInput>
-    <Button
+    <Button style={styles.btn}
         title="Enviar"
         color="#5c0802"
       />
 
-   
-  
+
+<View style={{width:'90%'}}>  
+      <FlatList 
+      showsHorizontalScrollIndicator = {false}
+      horizontal = {true}
+      data ={Pessoas}
+      keyExtractor = {(item) => item.id}
+      renderItem = { ({item}) =>(
+
+        <CardPessoas
+          nome = {item.nome}
+        ></CardPessoas>
+
+      )}
+      />
+      </View>
+
+
 
       <StatusBar style="auto" />
     </View>
-
 
   );
 }
@@ -48,6 +68,11 @@ const styles = StyleSheet.create({
           borderWidth: 1,
   },
 
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+
   scrollView: {
     backgroundColor: 'gray',
     marginHorizontal: 20,
@@ -58,4 +83,17 @@ const styles = StyleSheet.create({
     height: 200,
     margin: 20
   },
+
+  header: {
+    fontSize: 22,
+    backgroundColor: '#fff',
+  },
+
+  title: {
+    fontSize: 15,
+  },
+
+  titulo: {
+    fontSize: 35,
+  }
 });
