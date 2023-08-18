@@ -12,7 +12,7 @@ export default function App() {
         <Image
           source={{
             uri: 'https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/05/CBR-Featured-Image-Chuuya-Nakahara.jpg',
-          }} style={{width: 200, height: 200}}
+          }} style={styles.img}
         />
 
     <Text>Digite o nome desse personagem:</Text>
@@ -51,5 +51,11 @@ const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: 'gray',
     marginHorizontal: 20,
+  },
+
+  img: {
+    width: 200,
+    height: 200,
+    margin: 20
   },
 });
